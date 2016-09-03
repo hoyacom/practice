@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.hoya.lecture.0903.javaadvanced</groupId>
-  <artifactId>JavaApp2</artifactId>
+  <artifactId>kostajava301</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>JavaApp2</name>
+  <name>kostajava301</name>
   <url>http://maven.apache.org</url>
 
   <properties>

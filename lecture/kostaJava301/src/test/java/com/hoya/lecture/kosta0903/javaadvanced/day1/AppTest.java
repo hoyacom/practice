@@ -1,4 +1,4 @@
-package com.hoya.lecture.javaadvanced.JavaApp2;
+package com.hoya.lecture.kosta0903.javaadvanced.day1;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
