@@ -17,7 +17,7 @@ public class SimpleFileClient {
 	// different name because i don't want to
 	// overwrite the one used by server...
 //	public final static String FILE_TO_RECEIVED = "c:/temp/source-downloaded.pdf";
-	public final static String FILE_TO_RECEIVED = "pom_recive.xml";
+	public final static String FILE_TO_RECEIVED = "recive.xml";
 
 	// file size temporary hard coded
 	// should bigger than the file to be downloaded

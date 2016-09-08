@@ -17,7 +17,7 @@ public class SimpleFileServer {
 	 * filename
 	 */
 //	public final static String FILE_TO_SEND = "c:/temp/source.pdf";
-	public final static String FILE_TO_SEND = "pom.xml";
+	public final static String FILE_TO_SEND = "send.xml";
 
 	public static void main(String[] args) throws IOException {
 		ServerSocket servsock = null;

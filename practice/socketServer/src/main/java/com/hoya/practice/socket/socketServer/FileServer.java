@@ -26,8 +26,10 @@ public class FileServer extends Thread {
 	public void run() {
 		while (true) {
 			try {
+				System.out.println("1Waiting....Start");
 				Socket clientSock = ss.accept();
 				saveFile(clientSock);
+				System.out.println("2Waiting....End");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -36,7 +38,7 @@ public class FileServer extends Thread {
 
 	private void saveFile(Socket clientSock) throws IOException {
 		DataInputStream dis = new DataInputStream(clientSock.getInputStream());
-		FileOutputStream fos = new FileOutputStream("testfile.jpg");
+		FileOutputStream fos = new FileOutputStream("reciveFromClient.xml");
 		byte[] buffer = new byte[4096];
 
 		int filesize = 15123; // Send file size in separate msg
@@ -58,5 +60,4 @@ public class FileServer extends Thread {
 		FileServer fs = new FileServer(1988);
 		fs.start();
 	}
-
 }
