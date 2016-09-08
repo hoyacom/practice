@@ -1,10 +1,12 @@
 package com.hoya.practice.socket.socketClient;
 
 import java.io.BufferedOutputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class SimpleFileClient {
 
@@ -14,26 +16,42 @@ public class SimpleFileClient {
 	// you may change this, I give a
 	// different name because i don't want to
 	// overwrite the one used by server...
-	public final static String FILE_TO_RECEIVED = "c:/temp/source-downloaded.pdf";
+//	public final static String FILE_TO_RECEIVED = "c:/temp/source-downloaded.pdf";
+	public final static String FILE_TO_RECEIVED = "pom_recive.xml";
 
 	// file size temporary hard coded
 	// should bigger than the file to be downloaded
 	public final static int FILE_SIZE = 6022386;
 
 	public static void main(String[] args) throws IOException {
+		reciveFileIfConnected(SERVER, SOCKET_PORT, FILE_TO_RECEIVED);
+	}
+
+	/**
+	 * Created date : Sep 8, 2016 3:23:13 PM
+	 * @author hoyacom
+	 * @param server TODO
+	 * @param port TODO
+	 * @param filePath TODO
+	 * @since 
+	 * @throws UnknownHostException
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 */
+	private static void reciveFileIfConnected(String server, int port, String filePath) throws UnknownHostException, IOException, FileNotFoundException {
 		int bytesRead;
 		int current = 0;
 		FileOutputStream fos = null;
 		BufferedOutputStream bos = null;
 		Socket sock = null;
 		try {
-			sock = new Socket(SERVER, SOCKET_PORT);
+			sock = new Socket(server, port);
 			System.out.println("Connecting...");
 
 			// receive file
 			byte[] mybytearray = new byte[FILE_SIZE];
 			InputStream is = sock.getInputStream();
-			fos = new FileOutputStream(FILE_TO_RECEIVED);
+			fos = new FileOutputStream(filePath);
 			bos = new BufferedOutputStream(fos);
 			bytesRead = is.read(mybytearray, 0, mybytearray.length);
 			current = bytesRead;
@@ -56,5 +74,4 @@ public class SimpleFileClient {
 				sock.close();
 		}
 	}
-
 }
