@@ -6,15 +6,15 @@ import java.io.InputStreamReader;
 
 public class Test {
     public static void main(String[] args) throws Exception{
-		System.out.println("ï¿½Ú¹Ù°ï¿½Ş¾È³ï¿½~!!");
+		System.out.println("ÀÚ¹Ù°í±Ş¾È³ç~!!");
 		
 		//ctrl+shift+ 'o'
-		InputStream is = System.in;//byteï¿½Ô·Â°ï¿½Ã¼
-		InputStreamReader isr = new InputStreamReader(is);//byte--->ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
-		BufferedReader br = new BufferedReader(isr);//ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½
+		InputStream is = System.in;//byteÀÔ·Â°´Ã¼
+		InputStreamReader isr = new InputStreamReader(is);//byte--->¹®ÀÚ º¯È¯
+		BufferedReader br = new BufferedReader(isr);//¹®ÀÚ¸¦ ¹öÆÛ¿¡ ÀúÀå
 		     
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ğ±ï¿½
-		String str = br.readLine();//ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Ğ±ï¿½
+		//µ¥ÀÌÅÍ ÀĞ±â
+		String str = br.readLine();//¶óÀÎ´ÜÀ§·Î µ¥ÀÌÅÍ¸¦ ÀĞ±â
 		System.out.println("STR="+ str);		
 		
 	}//main

@@ -16,6 +16,7 @@ public class ObjectReadTest {
 			System.out.println("이름: "+ p.name);
 			System.out.println("나이: "+ p.age);
 			System.out.println("직업: "+ p.job);
+		
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
