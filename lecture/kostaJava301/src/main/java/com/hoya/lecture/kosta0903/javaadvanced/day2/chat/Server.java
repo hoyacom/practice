@@ -8,31 +8,31 @@ import java.net.Socket;
 import java.util.Vector;
 
 public class Server extends Thread{
-   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!!
+   //¼ÒÄÏÀ» ÅëÇØ Á¢¼ÓÇÑ Å¬¶óÀÌ¾ðÆ®¸¦ °ü¸®!!
 	ServerSocket ss;
-	Vector<Service> v;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
-	//ServiceÅ¬ï¿½ï¿½ï¿½ï¿½ == Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®
+	Vector<Service> v;//Á¢¼ÓÇÑ Å¬¶óÀÌ¾ðÆ®¸¦ ÀúÀå
+	//ServiceÅ¬·¡½º == Å¬¶óÀÌ¾ðÆ®
 	
 	
    public Server() {
 	 try {
-		//ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½ip, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ portï¿½ï¿½È£)
-		  ss = new ServerSocket(5000);//ï¿½ï¿½ï¿½ï¿½ON
-		  System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½...");
+		//¼ÒÄÏ¼­¹ö½ÃÀÛ(Çö½Ã½ºÅÛip, ÁöÁ¤µÈ port¹øÈ£)
+		  ss = new ServerSocket(5000);//¼­¹öON
+		  System.out.println("¼­¹ö½ÃÀÛ...");
 		  v = new Vector<Service>();
 		  start();
 	} catch (IOException e) {
 		e.printStackTrace();
 	}
-   }//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	
+   }//»ý¼ºÀÚ	
 	
 	
-   //ï¿½Úµï¿½: (ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®)ï¿½ï¿½ï¿½Ó´ï¿½â¼­ï¿½ï¿½
+   //ÄÚµå: (¿©·¯ Å¬¶óÀÌ¾ðÆ®)Á¢¼Ó´ë±â¼­ºñ½º
    public void run(){
 	   try {
 		while(true){  
-			  Socket s= ss.accept();//Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ® ï¿½ï¿½ï¿½Ó´ï¿½ï¿½ 
-			  //s: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			  Socket s= ss.accept();//Å¬¶óÀÌ¾ðÆ® Á¢¼Ó´ë±â 
+			  //s: Á¢¼ÓÇÑ Å¬¶óÀÌ¾ðÆ®ÀÇ Á¤º¸
 			  Service ser = new Service(s,v);
 		      v.addElement(ser);
 		   }

@@ -10,11 +10,11 @@ import java.net.Socket;
 import java.util.Vector;
 
 public class Service extends Thread{
-   //ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½
-   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð±ï¿½
+   //¼ÒÄÏ¿¡ ´ëÇÑ ÀÔÃâ·Â¼­ºñ½º
+   //½º·¹µå: Å¬¶óÀÌ¾ðÆ®°¡ º¸³»¿Â ¸Þ½ÃÁö¸¦ ÀÐ±â
 	
-   BufferedReader in;//from Client(Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ® ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½Ð±ï¿½)
-   OutputStream out;// to Client(Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½)
+   BufferedReader in;//from Client(Å¬¶óÀÌ¾ðÆ® ¸Þ½ÃÁö ÀÐ±â)
+   OutputStream out;// to Client(Å¬¶óÀÌ¾ðÆ®¿¡°Ô ¸Þ½ÃÁö Àü´Þ,¾²±â)
    Vector<Service> v;
    
    String nickName;
@@ -30,22 +30,22 @@ public class Service extends Thread{
 	} catch (IOException e) {
 		e.printStackTrace();
 	}
-   }//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+   }//»ý¼ºÀÚ
    
    @Override
 	public void run() {
 	   try {
 		   
-		  nickName = in.readLine();//ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½, Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È­ï¿½ï¿½ ï¿½Ð±ï¿½
+		  nickName = in.readLine();//ÇÑ¹ø½ÇÇà, Å¬¶óÀÌ¾ðÆ®°¡ º¸³½ ´ëÈ­¸í ÀÐ±â
 		   
 		while(true){
-			  String msg = in.readLine();//Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½Ð±ï¿½
+			  String msg = in.readLine();//Å¬¶óÀÌ¾ðÆ®°¡ º¸³½ ¸Þ½ÃÁö ÀÐ±â
 			  
-			  System.out.println("from["+ s.getInetAddress().getHostAddress()+"]ï¿½ï¿½"+ msg);
+			  System.out.println("from["+ s.getInetAddress().getHostAddress()+"]¢º"+ msg);
 			  if(msg.charAt(0) == '@'){
 				  nickName = msg.substring(1);
 			  }else{
-			  messageAll(nickName+"ï¿½ï¿½ "+msg);
+			  messageAll(nickName+"¢º "+msg);
 			  }
 		}//while
 	  } catch (IOException e) {
@@ -55,25 +55,25 @@ public class Service extends Thread{
    
    public void messageTo(String msg)throws IOException{
 	   /*
-	    throwsï¿½ï¿½ï¿½ï¿½? 	    
-	   messageAllï¿½ï¿½ forï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ indexï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
-	   ï¿½Ø´ï¿½ clientï¿½ï¿½ Vectorï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½!!
+	    throwsÀÌÀ¯? 	    
+	   messageAllÀÇ for¹® ³»¿¡¼­ Á¢¼ÓÀ» ²÷Àº Å¬¶óÀÌ¾ðÆ®ÀÇ indexÁ¤º¸¸¦ ¾ò°í
+	   ÇØ´ç client¸¦ Vector¿¡¼­ »èÁ¦ÇÏ±â À§ÇØ!!
 	   */
 	   
-	   //Æ¯ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+	   //Æ¯Á¤ Å¬¶óÀÌ¾ðÆ®¿¡°Ô ¸Þ½ÃÁö Àü´Þ(½ÇÁ¦ ¸Þ½ÃÁö Àü´Þ)
       out.write( (msg+"\n").getBytes() );
    }//messageTo
    
    public void messageAll(String msg){
-	   //Æ¯ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ msgï¿½ï¿½ ï¿½ï¿½Ã¼ Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½	   
-	   //ï¿½ï¿½Ã¼ Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Óµï¿½ Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½)
-	   for(int i=0; i<v.size(); i++){//ï¿½ï¿½ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½
+	   //Æ¯Á¤ Å¬¶óÀÌ¾ðÆ®°¡ º¸³½ msg¸¦ ÀüÃ¼ Å¬¶óÀÌ¾ðÆ®¿¡°Ô Àü´Þ	   
+	   //ÀüÃ¼ Å¬¶óÀÌ¾ðÆ®¿¡°Ô ¸Þ½ÃÁö Àü´Þ(Á¢¼ÓµÈ Å¬¶óÀÌ¾ðÆ®µéÀ» Ç¥Çö)
+	   for(int i=0; i<v.size(); i++){//º¤ÅÍÀÎµ¦½º¸¦ Ç¥Çö
 		  Service ser = v.get(i);
 		  try {
 			ser.messageTo(msg);
 		} catch (IOException e) {
-			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-			System.out.println("Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!!");
+			//Á¢¼ÓÀ» ²÷Àº Å¬¶óÀÌ¾ðÆ®°¡ ¹ß»ýÇßÀ»¶§
+			System.out.println("Å¬¶óÀÌ¾ðÆ® Á¢¼Ó ²÷À½!!");
 			v.remove(i--);
 		}
 	   }
